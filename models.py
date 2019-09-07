@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from mistune import markdown
 
 db = SQLAlchemy()
 
@@ -16,3 +17,6 @@ class Note(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    @property
+    def body_html(self):
+        return markdown(self.body)

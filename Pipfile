@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 nano = "*"
+mistune = "*"
 
 [requires]
 python_version = "3.7"
